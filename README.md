@@ -2,7 +2,7 @@
 
 Jenkins · SonarQube · Nexus · Docker · Trivy · Kubernetes
 
-End-to-end enterprise CI/CD pipeline automating secure application delivery from source code to Kubernetes cluster using Jenkins and DevSecOps tooling.
+End-to-end enterprise CI/CD pipeline automating secure application delivery from source code to Kubernetes cluster using Jenkins and modern DevSecOps tooling.
 
 📌 Overview
 
@@ -25,7 +25,16 @@ RBAC-secured cluster deployment
 Quality Gate enforcement
 
 🏗️ Architecture
-4
+Developer → GitHub → Jenkins Pipeline
+                     │
+                     ├── Maven Build & Test
+                     ├── SonarQube Analysis
+                     ├── Nexus Artifact Publish
+                     ├── Docker Build
+                     ├── Trivy Security Scan
+                     ├── Docker Push
+                     └── Kubernetes Deploy
+
 ⚙️ Pipeline Stages
 
 Code Checkout – Pull source from GitHub
@@ -79,7 +88,7 @@ Component	Host	Port
 Jenkins	EC2	8080
 SonarQube	EC2	9000
 Nexus	EC2	8081
-Kubernetes	kubeadm cluster	6443
+Kubernetes API	Cluster	6443
 🔐 Kubernetes Deployment Security
 
 Jenkins deploys to Kubernetes using:
@@ -96,15 +105,12 @@ Namespace isolation (project)
 .
 ├── Jenkinsfile
 ├── deploy-svc.yaml
+├── Dockerfile
 ├── pom.xml
 ├── src/
-├── Dockerfile
 └── README.md
 
-🚀 Jenkins Pipeline
-
-Key stages from Jenkinsfile:
-
+🚀 Jenkins Pipeline (Key Stages)
 stage('SonarQube Analysis') {
   steps {
     withSonarQubeEnv('sonar-server') {
@@ -131,11 +137,11 @@ stage('Deploy to K8s') {
 Filesystem Scan
 trivy fs --severity HIGH,CRITICAL .
 
-Container Scan
+Container Image Scan
 trivy image mkhkhalil2000/devopsproject:latest
 
 
-Reports archived in Jenkins artifacts.
+Scan reports are archived in Jenkins artifacts.
 
 ☸️ Kubernetes Deployment
 kubectl apply -f deploy-svc.yaml
@@ -144,7 +150,7 @@ kubectl get svc -n project
 
 📊 SonarQube Quality Gate
 
-Pipeline enforces quality:
+Pipeline enforces code quality based on:
 
 Bugs
 
@@ -156,7 +162,7 @@ Coverage
 
 Duplications
 
-Pipeline waits for Quality Gate before proceeding.
+Pipeline waits for Quality Gate before continuing.
 
 📦 Nexus Artifact Repository
 
@@ -176,9 +182,17 @@ docker push mkhkhalil2000/devopsproject:latest
 
 ▶️ How to Run
 
-Configure Jenkins tools (JDK, Maven, Docker, Sonar)
+Configure Jenkins tools
 
-Add credentials:
+JDK
+
+Maven
+
+Docker
+
+SonarScanner
+
+Add Jenkins credentials
 
 Git
 
@@ -188,11 +202,11 @@ Kubernetes
 
 Sonar Token
 
-Create pipeline job
+Create Jenkins Pipeline Job
 
-Run build
+Run pipeline
 
-📈 Key DevOps Practices Implemented
+📈 DevOps Practices Implemented
 
 CI/CD automation
 
@@ -214,16 +228,3 @@ Deployment verification
 
 Mahmoud Khalil
 DevOps Engineer
-
-GitHub:
-https://github.com/Mahmoud-Khalil25
-
-⭐ Purpose
-
-This project demonstrates enterprise-grade CI/CD and DevSecOps skills for:
-
-DevOps Engineer roles
-
-Cloud Engineer roles
-
-Platform Engineer roles

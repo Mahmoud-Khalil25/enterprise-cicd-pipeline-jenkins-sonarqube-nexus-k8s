@@ -19,6 +19,12 @@ This project simulates a **production-style software delivery workflow** from so
 ---
 
 # 🏗️ Architecture Overview
+### Pipleline diagram
+Architecture block diagram highlighting the diffrent stages
+
+![Pipeline Diagram](docs/enterprise-cicd-pipeline-jenkins-sonarqube-nexus-k8s.png)
+
+---
 
 ```
 Developer
@@ -55,7 +61,6 @@ Developer
    v
  Deployment Verification
 ```
-
 ---
 
 # 🧠 Methodology Applied

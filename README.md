@@ -272,7 +272,7 @@ Jenkins CI/CD server used to orchestrate the full DevSecOps pipeline.
 
 Successful pipeline run showing build, security scanning, artifact publishing, and Kubernetes deployment stages.
 
-![Pipeline Execution](docs/pipeline-execution.png)
+![Pipeline Execution](docs/pipeline-excution.png)
 
 ---
 

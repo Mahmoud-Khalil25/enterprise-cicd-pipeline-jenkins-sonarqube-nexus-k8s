@@ -256,17 +256,63 @@ The pipeline now enables:
 
 # 🖼️ Screenshots
 
-The following screenshots demonstrate the pipeline workflow.
+The following screenshots demonstrate the pipeline workflow and infrastructure components used in this project.
+
+---
+
+### Jenkins Login
+
+Jenkins CI/CD server used to orchestrate the full DevSecOps pipeline.
+
+![Jenkins Login](docs/jenkins-login.png)
+
+---
 
 ### Jenkins Pipeline Execution
-*(Pipeline stages and successful execution)*
 
-### SonarQube Dashboard Login
-*(Code analysis and quality gate results)*
+Successful pipeline run showing build, security scanning, artifact publishing, and Kubernetes deployment stages.
 
-### Nexus Artifact Repository Login
-*(Published Maven artifacts)*
-### Kuberbetes nodes
+![Pipeline Execution](docs/pipeline-execution.png)
+
+---
+
+### SonarQube Container
+
+SonarQube running as a container used for static code analysis and quality gate validation.
+
+![SonarQube Container](docs/sonar-container.png)
+
+---
+
+### SonarQube Dashboard
+
+Code quality dashboard showing analysis results and quality gate status.
+
+![SonarQube Dashboard](docs/sonarqube-dashboard.png)
+
+---
+
+### Nexus Container
+
+Nexus Repository Manager container used for artifact storage and dependency management.
+
+![Nexus Container](docs/nexus-container.png)
+
+---
+
+### Nexus Repository Dashboard
+
+Nexus web interface displaying artifact repositories and stored build artifacts.
+
+![Nexus Dashboard](docs/nexus-dashboard.png)
+
+---
+
+### Kubernetes Cluster Nodes
+
+Kubernetes cluster nodes showing the control plane and worker nodes used for application deployment.
+
+![Kubernetes Nodes](docs/k8s-nodes.png)
 
 
 
